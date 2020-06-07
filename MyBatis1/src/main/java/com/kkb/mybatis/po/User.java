@@ -39,6 +39,7 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	// for printing User instance
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", birthday=" + birthday + ", sex=" + sex + ", address="
