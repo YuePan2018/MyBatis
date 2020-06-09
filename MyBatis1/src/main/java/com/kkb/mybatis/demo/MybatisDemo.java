@@ -1,6 +1,7 @@
 package com.kkb.mybatis.demo;
 
 import java.io.InputStream;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -44,5 +45,24 @@ public class MybatisDemo {
 		System.out.println(user);
 		//释放资源
 		sqlSession.close();
+	}
+	// 根据用户名称模糊查询用户信息
+	@Test
+	public void testFindUserByUsername() {
+		// 数据库会话实例
+		SqlSession sqlSession = null;
+		try {
+			// 创建数据库会话实例sqlSession
+			sqlSession = sqlSessionFactory.openSession();
+			// 查询单个记录，根据用户id查询用户信息
+			List<User> list = sqlSession.selectList("test.findUserByUsername", "小明");
+			System.out.println(list.size());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (sqlSession != null) {
+				sqlSession.close();
+			}
+		}
 	}
 }

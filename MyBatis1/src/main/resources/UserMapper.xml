@@ -6,6 +6,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<mapper namespace="test">
 		<!-- 根据id获取用户信息 -->
 		<select id="findUserById" parameterType="int" resultType="com.kkb.mybatis.po.User">
-		select * from user where id = #{id} 
-		</select>		
+			select * from user where id = #{id} 
+		</select>
+		<!-- select data by username -->
+		<select id = "findUserByUsername" parameterType="java.lang.String" resultType="com.kkb.mybatis.po.User">
+			select * from user where username like '%${value}%'
+		</select>
 	</mapper>
