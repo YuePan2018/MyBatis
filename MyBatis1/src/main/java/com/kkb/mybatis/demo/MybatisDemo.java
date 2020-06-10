@@ -65,4 +65,28 @@ public class MybatisDemo {
 			}
 		}
 	}
+	@Test
+	public void testInsert() {
+		// 数据库会话实例
+		SqlSession sqlSession = null;
+		try {
+			// 创建数据库会话实例sqlSession
+			sqlSession = sqlSessionFactory.openSession();
+			User user = new User();
+			user.setUsername("张小明");
+			user.setAddress("河南");
+			sqlSession.insert("test.insertUser", user);
+			//提交事务
+			sqlSession.commit();
+			// print selectKey
+			System.out.println(user.getId());
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (sqlSession != null) {
+				sqlSession.close();
+			}
+		}
+	}
 }
