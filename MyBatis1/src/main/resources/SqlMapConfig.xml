@@ -21,6 +21,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<!-- for basic MybatisDemo.java -->
 		<mapper resource="UserMapper.xml" />
 		<!-- for UserMapper.java -->
-		<mapper resource="mapper/UserMapper.xml"/>
+		<package name="com.kkb.mybatis.mapper"/>
 	</mappers>
 </configuration>
